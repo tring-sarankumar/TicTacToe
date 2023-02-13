@@ -5,7 +5,9 @@ import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.util.*;
 class TicTacToe {
+	
   static PrintStream l = new PrintStream((new FileOutputStream(FileDescriptor.out)));
+  
   static char[][] board = new char[3][3];
   
   TicTacToe() {
@@ -20,6 +22,7 @@ class TicTacToe {
     }
   }
   
+  
   void printboard() {
     l.println("-------");
     for (int i = 0; i < board.length; i++) {
@@ -31,9 +34,13 @@ class TicTacToe {
       l.println("-------");
     }
   }
+  
+  
   static void placeMark(int row, int col, char mark) {
     board[row][col] = mark;
   }
+  
+  
   static boolean checkRow() {
     for (int i = 0; i < 3; i++) {
       if (board[i][0] != ' ' && board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
@@ -42,6 +49,8 @@ class TicTacToe {
     }
     return false;
   }
+  
+  
   static boolean checkcol() {
     for (int j = 0; j < 3; j++) {
       if (board[0][j] != ' ' && board[0][j] == board[1][j] && board[1][j] == board[2][j]) {
@@ -50,6 +59,8 @@ class TicTacToe {
     }
     return false;
   }
+  
+  
   static boolean checkDiag() {
     if (board[0][0] != ' ' && board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] == board[2][2] || board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
       return true;
@@ -57,12 +68,15 @@ class TicTacToe {
       return false;
     }
   }
+  
+  
 }
 
 
 class HumanPlayer {
   String name;
   char mark;
+  
   HumanPlayer(String name, char mark) {
     this.name = name;
     this.mark = mark;
@@ -97,7 +111,7 @@ public class Game {
   public static void main(String[] args) {
     TicTacToe tic = new TicTacToe();
     Scanner scan = new Scanner(System.in);
-    //Scanner scan1 = new Scanner(System.in);
+    
     
     char mark;
     char mark1;
@@ -141,6 +155,7 @@ public class Game {
         }
       }
     }
+    
     if (t == 0) {
       TicTacToe.l.println(cp.name + " Die");
     }
